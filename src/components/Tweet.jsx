@@ -1,9 +1,9 @@
 import {useContext} from "react";
-import {ApiContext} from "../App.jsx";
+import {ThemeContext} from "../App.jsx";
 
 export default function Tweet(props) {
     const {tweet} = props;
-    const {theme} = useContext(ApiContext);
+    const {theme} = useContext(ThemeContext);
     
     return (
         <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>

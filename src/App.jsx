@@ -5,7 +5,8 @@ import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
-export const ApiContext = createContext();
+export const UserContext = createContext();
+export const ThemeContext = createContext();
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
@@ -18,13 +19,15 @@ function App() {
     }, [theme])
 
     return (
-        <ApiContext.Provider value={{tweets, setTweets, theme, setTheme, user}}>
-            <div className="container">
-                <Header/>
-                <Tweets/>
-                <RightSide/>
-            </div>
-        </ApiContext.Provider>
+        <UserContext.Provider value={{tweets, setTweets, user}}>
+            <ThemeContext.Provider value={{theme, setTheme}}>
+                <div className="container">
+                    <Header/>
+                    <Tweets/>
+                    <RightSide/>
+                </div>
+            </ThemeContext.Provider>
+        </UserContext.Provider>
     )
 }
 
